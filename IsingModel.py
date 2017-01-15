@@ -61,8 +61,8 @@ def sweeper(temp,site):
         s=np.size(site[0]) #size of first row of lattice
         q=np.size(site)
 
-#looping over lattice so it sweeps through lattice 1000 times
-        for i in range(1000): 
+#looping over lattice so it sweeps through each lattice point
+        for i in range(q): 
         
 #defining sites in the lattice w/ coordinates (a,b)
             a=rd.randint(0,s-1) #random integer between 0 and max value 
@@ -78,7 +78,7 @@ def sweeper(temp,site):
 #creating boundary conditions    
             elif 0<a<s-1 and b==0:
                      dE=-2*point*(site[a+1][b]+ site[a-1][b] +site[a][b+1]+ site[a][s-1]) 
-                         #s instead of b otherwise not within boundary^
+                                       #s instead of b otherwise not within boundary^
             elif a==0 and 0<b<s-1:
                    dE=-2*point*(site[a+1][b]+ site[s-1][b] +site[a][b+1]+ site[a][b-1]) 
     
@@ -87,7 +87,7 @@ def sweeper(temp,site):
     
             elif a==s-1 and 0<b<s-1:
                     dE=-2*point*(site[0][b]+site[a-1][b] +site[a][b+1]+site[a][b-1]) 
-#if we increase a we are outside boundary^
+     #if we increase a we are outside ^  boundary
 
             elif 0<a<s-1 and b==s-1:
                     dE=-2*point*(site[a+1][b]+site[a-1][b] +site[a][0]+ site[a][b-1]) 
